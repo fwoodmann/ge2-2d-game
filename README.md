@@ -5,3 +5,6 @@
 ## Genre & Art Style
 
 ## Mitarbeiter
+* [Florian Holzmann](https://github.com/fwoodmann)
+* [Yannick Hass](https://github.com/HassYannick)
+* [David Albrecht](https://github.com/da-albrecht)
