@@ -1,4 +1,4 @@
-# Spielidee
+# KWAK Jump
 
 ## Scope of the Game
 
