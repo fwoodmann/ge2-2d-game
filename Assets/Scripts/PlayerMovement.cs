@@ -10,9 +10,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float velocity = 0.0f;
     [SerializeField] private float jumpHeight = 0.0f;
     [SerializeField] private BoxCollider2D boxCollider2D;
+    
     void Start()
     {
     }
+
     void Update()
     {
         if(IsGrounded())
