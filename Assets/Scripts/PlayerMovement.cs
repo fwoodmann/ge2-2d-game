@@ -42,4 +42,14 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * boxCollider2D.bounds.extents.y, Color.red);
         return raycastHit2D.collider != null;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Collectables"))
+        {
+            ScoreManager.instance.AddScore(10000);
+            Debug.Log("Score");
+            Destroy(other.gameObject);
+        }
+    }
 }
