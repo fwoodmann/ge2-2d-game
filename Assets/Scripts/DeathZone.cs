@@ -17,10 +17,10 @@ public class DeathZone : MonoBehaviour
         Destroy(other.gameObject); // can remove platform objects to prevent lag
         Debug.Log("Enter" + other.gameObject.name);
 
-       // if (other.gameObject.name == "Player")
-       // {
-       //     SceneManager.LoadScene(0);  //return to menu after player dies
-        //}
+        if (other.gameObject.name == "Player")
+        {
+            SceneManager.LoadScene(0);  //return to menu after player dies
+        }
          
     }
     
