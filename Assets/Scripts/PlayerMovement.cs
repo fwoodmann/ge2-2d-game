@@ -10,17 +10,19 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float velocity = 0.0f;
     [SerializeField] private float jumpHeight = 0.0f;
     [SerializeField] private BoxCollider2D boxCollider2D;
-    
+    Camera m_Camera;
+    Vector3 cameraPos;
+    public float smoothSpeed = 0.125f;
+    public Vector3 offset;
     void Start()
     {
+         m_Camera = Camera.main;
     }
-
     void Update()
     {
         if(IsGrounded())
         {
             this.rb.velocity = new Vector2(0, jumpHeight);
-           // Debug.Log("up");
         }
         if(Input.GetKey (KeyCode.D))
         {
@@ -30,7 +32,18 @@ public class PlayerMovement : MonoBehaviour
         {
             this.rb.velocity = new Vector2(-velocity, rb.velocity.y);
         }
+   
     }
+    void LateUpdate()
+    {
+            Vector3 desiredPosition = new Vector3(0f, rb.position.y+1.25f, -10f) + offset;
+            Vector3 smoothedPosition = Vector3.Lerp(m_Camera.transform.position, desiredPosition, smoothSpeed);
+            if(desiredPosition.y > smoothedPosition.y)
+            {
+                m_Camera.transform.position = new Vector3(0, smoothedPosition.y, -10f);
+            }
+    }
+      
     
     /*
      * https://www.youtube.com/watch?v=ptvK4Fp5vRY
