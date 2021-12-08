@@ -1041,6 +1041,7 @@ MonoBehaviour:
   player: {fileID: 109176650}
   platformPrefab: {fileID: 8913605463369653611, guid: 78caca653bb01584081eda4b2129e42c, type: 3}
   collectiblePrefab: {fileID: 6967430564129476489, guid: c757404d66d1d494dac6cd4e126c17a1, type: 3}
+  enemyPrefab: {fileID: 1124270176852239465, guid: 6d7288cf0fb6f4a4ca49ecdaa718ddbe, type: 3}
   levelWidth: 3.5
   minY: 1
   maxY: 1.75
