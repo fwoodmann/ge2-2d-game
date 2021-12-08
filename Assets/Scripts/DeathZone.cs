@@ -11,6 +11,7 @@ public class DeathZone : MonoBehaviour
     public GameObject player;
     public GameObject platformPrefab;
     public GameObject collectiblePrefab;
+    public GameObject enemyPrefab;
     private GameObject myPlat;
 
     public float levelWidth = 3.5f;
@@ -32,13 +33,27 @@ public class DeathZone : MonoBehaviour
         myPlat = (GameObject)Instantiate(platformPrefab, 
         new Vector2(Random.Range(-levelWidth, levelWidth), myPlat.transform.position.y + (Random.Range(minY, maxY))), 
         Quaternion.identity);
-
-        if(Random.Range(0, 10) >= 5)    //change propability of collectibles
+        
+        //collectible spawner
+        if(Random.Range(0, 10) >= 5)    //change probability of collectibles
         {
             Instantiate(collectiblePrefab, 
             new Vector2(myPlat.transform.position.x, myPlat.transform.position.y + 1), 
             Quaternion.identity);
         }
+        //enemy Spawner
+        if(Random.Range(0, 10) >= 5)    //change propability of collectibles
+        {
+            Instantiate(enemyPrefab, 
+                new Vector2(0, myPlat.transform.position.y + 1), 
+                Quaternion.identity);
+        }
+
+        if (other.CompareTag("Platforms"))
+        {
+            ScoreManager.instance.AddScore(10);
+        }
+        
 
         Destroy(other.gameObject); // can remove platform objects to prevent lag
         //Debug.Log("Enter" + other.gameObject.name);
@@ -46,7 +61,8 @@ public class DeathZone : MonoBehaviour
         {
             SceneManager.LoadScene(2);  //return to menu after player dies
         }
-         
+        
+
     }
     
 }
