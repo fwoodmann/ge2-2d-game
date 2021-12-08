@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -63,6 +64,9 @@ public class PlayerMovement : MonoBehaviour
             ScoreManager.instance.AddScore(10000);
             Debug.Log("Score");
             Destroy(other.gameObject);
+        }
+        if (other.CompareTag("Enemies")){
+           SceneManager.LoadScene(2);  //return to menu after player dies
         }
     }
 }
