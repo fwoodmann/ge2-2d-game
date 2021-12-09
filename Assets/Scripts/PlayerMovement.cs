@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask platformsLayerMask;
+    [SerializeField] private LayerMask wallsLayerMask;
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private float velocity = 0.0f;
     [SerializeField] private float jumpHeight = 0.0f;
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 cameraPos;
     public float smoothSpeed = 0.125f;
     public Vector3 offset;
+    public AudioSource Sound;
     void Start()
     {
          m_Camera = Camera.main;
@@ -23,21 +25,34 @@ public class PlayerMovement : MonoBehaviour
     {
         if(IsGrounded())
         {
+            Sound.volume = PlayerPrefs.GetFloat("volume", 0.1f);
+            Sound.Play();
             this.rb.velocity = new Vector2(0, jumpHeight);
         }
-        if(Input.GetKey (KeyCode.D))
+        if (!IsRightWall() || !IsLeftWall())
         {
-            this.rb.velocity = new Vector2(velocity, rb.velocity.y);
+            if(Input.GetKey (KeyCode.D))
+            {
+                this.rb.velocity = new Vector2(velocity, rb.velocity.y);
+            }
+            if(Input.GetKey (KeyCode.A))
+            {
+                this.rb.velocity = new Vector2(-velocity, rb.velocity.y);
+            }
         }
-        if(Input.GetKey (KeyCode.A))
+        if (IsRightWall())
         {
-            this.rb.velocity = new Vector2(-velocity, rb.velocity.y);
+            this.rb.velocity = new Vector2(-2, 0);
+        }
+        if (IsLeftWall())
+        {
+            this.rb.velocity = new Vector2(2, 0);
         }
    
     }
     void LateUpdate()
     {
-            Vector3 desiredPosition = new Vector3(0f, rb.position.y+1.25f, -10f) + offset;
+            Vector3 desiredPosition = new Vector3(0f, rb.position.y, -10f) + offset;
             Vector3 smoothedPosition = Vector3.Lerp(m_Camera.transform.position, desiredPosition, smoothSpeed);
             if(desiredPosition.y > smoothedPosition.y)
             {
@@ -53,7 +68,23 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
             Vector2.down, .1f, platformsLayerMask);
-        Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * boxCollider2D.bounds.extents.y, Color.red);
+        //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * boxCollider2D.bounds.extents.y, Color.red);
+        return raycastHit2D.collider != null;
+    }
+
+    private bool IsRightWall()
+    {
+        RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
+            Vector2.right, .1f, wallsLayerMask);
+       // Debug.DrawRay(boxCollider2D.bounds.center, Vector2.right * boxCollider2D.bounds.extents.y, Color.red);
+        return raycastHit2D.collider != null;
+    }
+
+    private bool IsLeftWall()
+    {
+        RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
+            Vector2.left, .1f, wallsLayerMask);
+        //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.left * boxCollider2D.bounds.extents.y, Color.green);
         return raycastHit2D.collider != null;
     }
 

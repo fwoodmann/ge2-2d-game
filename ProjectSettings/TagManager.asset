@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Collectables
   - Enemies
+  - Platforms
   layers:
   - Default
   - TransparentFX
@@ -14,7 +15,7 @@ TagManager:
   - Water
   - UI
   - Platforms
-  - 
+  - Walls
   - 
   - 
   - 
