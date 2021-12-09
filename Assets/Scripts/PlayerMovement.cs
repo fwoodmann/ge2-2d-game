@@ -7,10 +7,10 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private LayerMask platformsLayerMask;
-    [SerializeField] private LayerMask wallsLayerMask;
     [SerializeField] private Rigidbody2D rb = null;
     [SerializeField] private float velocity = 0.0f;
     [SerializeField] private float jumpHeight = 0.0f;
+    [SerializeField] private int collectableValue = 0;
     [SerializeField] private BoxCollider2D boxCollider2D;
     Camera m_Camera;
     Vector3 cameraPos;
@@ -71,32 +71,12 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit2D.collider != null;
     }
 
-    /*private bool IsRightWall()
-    {
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
-            Vector2.right, .1f, wallsLayerMask);
-       // Debug.DrawRay(boxCollider2D.bounds.center, Vector2.right * boxCollider2D.bounds.extents.y, Color.red);
-        return raycastHit2D.collider != null;
-    }
-
-
-
-    private bool IsLeftWall()
-    {
-        RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
-            Vector2.left, .1f, wallsLayerMask);
-        //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.left * boxCollider2D.bounds.extents.y, Color.green);
-        return raycastHit2D.collider != null;
-    }*/
-
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Collectables"))
         {
-            ScoreManager.instance.AddScore(10000);
-            Debug.Log("Score");
+            ScoreManager.instance.AddScore(collectableValue);
+            //Debug.Log("Score");
             Destroy(other.gameObject);
         }
         if (other.CompareTag("Enemies")){

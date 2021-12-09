@@ -13,6 +13,9 @@ public class DeathZone : MonoBehaviour
     public GameObject collectiblePrefab;
     public GameObject enemyPrefab;
     private GameObject myPlat;
+    [SerializeField] private int platformValue = 0;
+    [SerializeField] private int enemyProb = 0;
+    [SerializeField] private int collectablesProb = 0;
 
     public float levelWidth = 3.5f;
     public float minY = 1f;
@@ -35,14 +38,14 @@ public class DeathZone : MonoBehaviour
         Quaternion.identity);
         
         //collectible spawner
-        if(Random.Range(0, 10) >= 5)    //change probability of collectibles
+        if(Random.Range(0, 100) <= collectablesProb)    //change probability of collectibles
         {
             Instantiate(collectiblePrefab, 
-            new Vector2(myPlat.transform.position.x, myPlat.transform.position.y + 1), 
+            new Vector2(myPlat.transform.position.x, myPlat.transform.position.y + 0.5f), 
             Quaternion.identity);
         }
         //enemy Spawner
-        if(Random.Range(0, 10) >= 5)    //change propability of collectibles
+        if(Random.Range(0, 100) <= enemyProb)    //change propability of collectibles
         {
             Instantiate(enemyPrefab, 
                 new Vector2(0, myPlat.transform.position.y + 1), 
@@ -51,7 +54,7 @@ public class DeathZone : MonoBehaviour
 
         if (other.CompareTag("Platforms"))
         {
-            ScoreManager.instance.AddScore(10);
+            ScoreManager.instance.AddScore(platformValue);
         }
         
 
