@@ -29,24 +29,23 @@ public class PlayerMovement : MonoBehaviour
             Sound.Play();
             this.rb.velocity = new Vector2(0, jumpHeight);
         }
-        if (!IsRightWall() || !IsLeftWall())
+    
+        if(Input.GetKey (KeyCode.D))    //movement key right
         {
-            if(Input.GetKey (KeyCode.D))
-            {
-                this.rb.velocity = new Vector2(velocity, rb.velocity.y);
-            }
-            if(Input.GetKey (KeyCode.A))
-            {
-                this.rb.velocity = new Vector2(-velocity, rb.velocity.y);
-            }
+            this.rb.velocity = new Vector2(velocity, rb.velocity.y);
         }
-        if (IsRightWall())
+        if(Input.GetKey (KeyCode.A))    //movement key left
         {
-            this.rb.velocity = new Vector2(-2, 0);
+            this.rb.velocity = new Vector2(-velocity, rb.velocity.y);
         }
-        if (IsLeftWall())
+        
+        if (rb.position.x > 4.8f)   //Edge Case when player leaves to the right
         {
-            this.rb.velocity = new Vector2(2, 0);
+            rb.transform.position = new Vector2(-4.75f, rb.position.y); 
+        }
+        if (rb.position.x < -4.8f)  //Edge Case when player leaves to the left
+        {
+            rb.transform.position = new Vector2(4.75f, rb.position.y); 
         }
    
     }
@@ -72,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit2D.collider != null;
     }
 
-    private bool IsRightWall()
+    /*private bool IsRightWall()
     {
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
             Vector2.right, .1f, wallsLayerMask);
@@ -80,13 +79,17 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit2D.collider != null;
     }
 
+
+
     private bool IsLeftWall()
     {
         RaycastHit2D raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f,
             Vector2.left, .1f, wallsLayerMask);
         //Debug.DrawRay(boxCollider2D.bounds.center, Vector2.left * boxCollider2D.bounds.extents.y, Color.green);
         return raycastHit2D.collider != null;
-    }
+    }*/
+
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
