@@ -39,13 +39,13 @@ public class PlayerMovement : MonoBehaviour
             this.rb.velocity = new Vector2(-velocity, rb.velocity.y);
         }
         
-        if (rb.position.x > 4.8f)   //Edge Case when player leaves to the right
+        if (rb.position.x > 4f)   //Edge Case when player leaves to the right
         {
-            rb.transform.position = new Vector2(-4.75f, rb.position.y); 
+            rb.transform.position = new Vector2(-3.95f, rb.position.y); 
         }
-        if (rb.position.x < -4.8f)  //Edge Case when player leaves to the left
+        if (rb.position.x < -4f)  //Edge Case when player leaves to the left
         {
-            rb.transform.position = new Vector2(4.75f, rb.position.y); 
+            rb.transform.position = new Vector2(3.95f, rb.position.y); 
         }
    
     }

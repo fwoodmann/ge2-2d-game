@@ -9,7 +9,7 @@ public class SoundHandler : MonoBehaviour
 
     public void PlaySound()
     {
-        Sound.volume = PlayerPrefs.GetFloat("volume", 0.1f);
+        Sound.volume = PlayerPrefs.GetFloat("volume");
         Sound.Play();
     }
 
