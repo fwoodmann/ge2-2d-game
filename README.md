@@ -3,8 +3,9 @@
 ## Scope of the Game
 
 ### Description
- You are a duck that is trying to get up an seemingly endless waterfall,
- while avoiding the typical dangers a duck faces.
+ You are playing as Kwak the Duck, all of your Friends flew to a new lake, because the chicken are coming. You are to scared to fly, 
+ so you try to escape from them by climbing the waterfall using logs. But the waterfall seems endless.
+
 
 ### Controls
  Use the A and D Key to help the Duck climb up the waterfall
@@ -17,17 +18,22 @@
 * Highscore
 
 ### Should Have:
-* PowerUps
-* Bosse
+* Gegner
 * Hintergrundmusik + SoundEffects
 
 ### NiceToHave: 
+* Power Ups
 * Plattformvarianten
 * Generierte Plattformen (die immer funktionieren)
 
 ### Genre & Art Style
 Platform, Singleplayer
 Pixel Art
+
+### Screenshots
+<pre>          Main Menu                     Game Start                    Character(Kwak)                    Gameplay
+<img src="https://user-images.githubusercontent.com/56965143/145547787-f81211cb-1f83-4b14-bebe-82bf574d51a8.PNG" width="220" height="220">  <img src="https://user-images.githubusercontent.com/56965143/145547791-200b6387-3dd2-4845-8499-132b011e8cef.PNG" width="220" height="220">  <img src="https://user-images.githubusercontent.com/56965143/145547780-10def926-e2ff-4141-94e1-b7461a569e9e.PNG" width="220" height="220">  <img src="https://user-images.githubusercontent.com/56965143/145547796-bec011b6-8494-4ada-8c9b-32ccf5d72d12.PNG" width="220" height="220"></pre>
+
 
 ## Team
 * [Florian Holzmann](https://github.com/fwoodmann)
