@@ -34,6 +34,8 @@ Pixel Art
 <pre>          Main Menu                     Game Start                    Character(Kwak)                    Gameplay
 <img src="https://user-images.githubusercontent.com/56965143/145547787-f81211cb-1f83-4b14-bebe-82bf574d51a8.PNG" width="220" height="220">  <img src="https://user-images.githubusercontent.com/56965143/145547791-200b6387-3dd2-4845-8499-132b011e8cef.PNG" width="220" height="220">  <img src="https://user-images.githubusercontent.com/56965143/145547780-10def926-e2ff-4141-94e1-b7461a569e9e.PNG" width="220" height="220">  <img src="https://user-images.githubusercontent.com/56965143/145547796-bec011b6-8494-4ada-8c9b-32ccf5d72d12.PNG" width="220" height="220"></pre>
 
+###Gameplay
+![output](https://user-images.githubusercontent.com/43883108/145641607-c6ea40c8-58e4-4be0-9c4e-71c517ee48df.gif)
 
 ## Team
 * [Florian Holzmann](https://github.com/fwoodmann)
